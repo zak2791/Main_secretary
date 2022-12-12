@@ -8,7 +8,7 @@
 //#include <QGraphicsSceneWheelEvent>
 //#include <QGraphicsSceneMouseEvent>
 #include <QGraphicsTextItem>
-#include "mainwindow.h"
+//#include "mainwindow.h"
 #include "itemresult.h"
 #include "itemname.h"
 

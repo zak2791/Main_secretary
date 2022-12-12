@@ -6,6 +6,11 @@
 #include <QKeyEvent>
 
 #include "viewwindow.h"
+#include <QComboBox>
+#include "eightquarterfinals.h"
+#include "roundsix.h"
+#include <QPushButton>
+
 /*
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,9 +28,21 @@ public:
 
 private:
     //Ui::MainWindow *ui;
+    QComboBox* cb;
+    QPushButton* btnSidePanel;
+    //btnSidePanel->setI
+
+    RoundSix* round_six;
+    EightQuarterfinals* scene8_1_4f;
 
     virtual void keyPressEvent(QKeyEvent*);
     virtual void resizeEvent(QResizeEvent*);
+
+    bool isSidePanelOpened = false;
+
+private slots:
+    void shoiceCategory(int);
+    void sidePanel(void);
 
 };
 #endif // MAINWINDOW_H
