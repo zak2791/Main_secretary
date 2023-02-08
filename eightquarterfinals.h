@@ -14,9 +14,9 @@
 
 class EightQuarterfinals : public QGraphicsScene{
 
-   QGraphicsTextItem* category;
-   QGraphicsTextItem* age;
-   QGraphicsTextItem* weight;
+   //QGraphicsTextItem* category;
+   //QGraphicsTextItem* age;
+   //QGraphicsTextItem* weight;
    //QList<QGraphicsTextItem*> final2;
    //QList<QGraphicsTextItem*> final;
    QGraphicsItemGroup* final4;
@@ -33,10 +33,12 @@ class EightQuarterfinals : public QGraphicsScene{
    ItemName* name8;
 
 public:
-    EightQuarterfinals();
-    void setWeight(QString);
-    void setCategory(QString);
-    void setAge(QString);
+    EightQuarterfinals(QString, QString, QString);
+    //void setWeight(QString);
+    //void setCategory(QString);
+    //void setAge(QString);
 };
+
+
 
 #endif // EIGHTQUARTERFINALS_H

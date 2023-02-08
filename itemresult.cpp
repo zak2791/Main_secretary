@@ -4,8 +4,10 @@
 #include <QDebug>
 #include <QTextOption>
 
-ItemResultStart::ItemResultStart(QString s){
+ItemResultStart::ItemResultStart(int id, QString s){
     num = s;
+    background_color = QColor("white");
+    id_pair = id;
 }
 
 QRectF ItemResultStart::boundingRect() const
@@ -17,22 +19,31 @@ QRectF ItemResultStart::boundingRect() const
 }
 
 void ItemResultStart::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget){
+    painter->setBrush(background_color);
+    painter->drawRect(QRectF(0, 0, 40, 40));
     painter->setBrush(Qt::black);
-    painter->drawText(QRectF(0, 0, 20, 40), num, QTextOption(Qt::AlignCenter));
+    painter->drawText(QRectF(0, 0, 40, 40), num, QTextOption(Qt::AlignCenter));
     Q_UNUSED(option);
     Q_UNUSED(widget);
     qDebug()<<num;
 }
 
 void ItemResultStart::mousePressEvent(QGraphicsSceneMouseEvent *event){
-    qDebug()<<"press";
+    background_color = QColor("gray");
+    update();
 }
 
-ItemResult::ItemResult(){
+void ItemResultStart::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
+    background_color = QColor("white");
+    update();
+}
+
+ItemResult::ItemResult(int id){
     result = "5:0";
     num = "1";
     time = "3:57";
     vin = "НБП";
+    id_pair = id;
 
 }
 

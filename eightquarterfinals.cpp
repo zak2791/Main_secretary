@@ -3,8 +3,10 @@
 #include <QGraphicsView>
 #include <QtDebug>
 #include <QScrollBar>
+#include <QApplication>
+#include <QClipboard>
 
-EightQuarterfinals::EightQuarterfinals(){
+EightQuarterfinals::EightQuarterfinals(QString sGender, QString sAge, QString sWeight){
     int x = 0;
     int y = 0;
     //p = (MainWindow*)parent;
@@ -91,31 +93,34 @@ EightQuarterfinals::EightQuarterfinals(){
     addLine(x + 420, y + 320, x + 460, y + 320, widePen);
     addLine(x + 460, y + 300, x + 500, y + 300, widePen);
 
+    QClipboard* pcb = QApplication::clipboard();
+    QList<QString> rowsFromExcel = pcb->text().split("\t");
+
     //ui->graphicsView->setTransform(QTransform().scale(2, 2));
-    ItemName* name1 = new ItemName("Абдурахман ибн Хоттаб", "КМС", "Брянская обл.");
+    ItemName* name1 = new ItemName(rowsFromExcel.at(0).split(";").at(0), rowsFromExcel.at(0).split(";").at(1), rowsFromExcel.at(0).split(";").at(2));
     addItem(name1);
-    name1->setPos(20, 0);
-    ItemName* name2 = new ItemName("Фамилия Имя", "КМС", "Брянская обл.");
-    addItem(name2);
-    name2->setPos(20, 40);
-    ItemName* name3 = new ItemName("Фамилия Имя", "КМС", "Брянская обл.");
-    addItem(name3);
-    name3->setPos(20, 80);
-    ItemName* name4 = new ItemName("Фамилия Имя", "КМС", "Брянская обл.");
-    addItem(name4);
-    name4->setPos(20, 120);
-    ItemName* name5 = new ItemName("Фамилия Имя", "КМС", "Брянская обл.");
+    name1->setPos(40, 0);
+    ItemName* name5 = new ItemName(rowsFromExcel.at(4).split(";").at(0), rowsFromExcel.at(4).split(";").at(1), rowsFromExcel.at(4).split(";").at(2));
     addItem(name5);
-    name5->setPos(20, 160);
-    ItemName* name6 = new ItemName("Фамилия Имя", "КМС", "Брянская обл.");
-    addItem(name6);
-    name6->setPos(20, 200);
-    ItemName* name7 = new ItemName("Фамилия Имя", "КМС", "Брянская обл.");
+    name5->setPos(40, 40);
+    ItemName* name3 = new ItemName(rowsFromExcel.at(2).split(";").at(0), rowsFromExcel.at(2).split(";").at(1), rowsFromExcel.at(2).split(";").at(2));
+    addItem(name3);
+    name3->setPos(40, 80);
+    ItemName* name7 = new ItemName(rowsFromExcel.at(6).split(";").at(0), rowsFromExcel.at(6).split(";").at(1), rowsFromExcel.at(6).split(";").at(2));
     addItem(name7);
-    name7->setPos(20, 240);
-    ItemName* name8 = new ItemName("Фамилия Имя", "КМС", "Брянская обл.");
+    name7->setPos(40, 120);
+    ItemName* name2 = new ItemName(rowsFromExcel.at(1).split(";").at(0), rowsFromExcel.at(1).split(";").at(1), rowsFromExcel.at(1).split(";").at(2));
+    addItem(name2);
+    name2->setPos(40, 160);
+    ItemName* name6 = new ItemName(rowsFromExcel.at(5).split(";").at(0), rowsFromExcel.at(5).split(";").at(1), rowsFromExcel.at(5).split(";").at(2));
+    addItem(name6);
+    name6->setPos(40, 200);
+    ItemName* name4 = new ItemName(rowsFromExcel.at(3).split(";").at(0), rowsFromExcel.at(3).split(";").at(1), rowsFromExcel.at(3).split(";").at(2));
+    addItem(name4);
+    name4->setPos(40, 240);
+    ItemName* name8 = new ItemName(rowsFromExcel.at(7).split(";").at(0), rowsFromExcel.at(7).split(";").at(1), rowsFromExcel.at(7).split(";").at(2));
     addItem(name8);
-    name8->setPos(20, 280);
+    name8->setPos(40, 280);
 
 
     QFont f; //= font()
@@ -178,18 +183,23 @@ EightQuarterfinals::EightQuarterfinals(){
     addItem(num8);
     num8->setPos(0, 280);
 
-    category = new QGraphicsTextItem;
+    QGraphicsTextItem* category = new QGraphicsTextItem;
     addItem(category);
     category->setPos(150, -70);
     category->setFont(f);
-    age = new QGraphicsTextItem;
+    category->setPlainText(sGender);
+
+    QGraphicsTextItem* age = new QGraphicsTextItem;
     addItem(age);
     age->setPos(270, -70);
     age->setFont(f);
-    weight = new QGraphicsTextItem;
+    age->setPlainText(sAge);
+
+    QGraphicsTextItem* weight = new QGraphicsTextItem;
     addItem(weight);
     weight->setPos(400, -70);
     weight->setFont(f);
+    weight->setPlainText(sWeight);
 
     ItemResult* i = new ItemResult();
     i->setPos(280, 20);
@@ -197,6 +207,7 @@ EightQuarterfinals::EightQuarterfinals(){
 
 }
 
+/*
 void EightQuarterfinals::setCategory(QString s){
     category->setPlainText(s);
 }
@@ -208,6 +219,7 @@ void EightQuarterfinals::setWeight(QString s){
 void EightQuarterfinals::setAge(QString s){
     age->setPlainText(s);
 }
+*/
 
 /*
 void EightQuarterfinals::wheelEvent(QGraphicsSceneWheelEvent* e){

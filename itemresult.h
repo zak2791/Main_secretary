@@ -11,14 +11,18 @@
 class ItemResultStart : public QGraphicsItem{
 
 public:
-    ItemResultStart(QString s = "");
+    ItemResultStart(int, QString s = "");
     QString num;
 
 
 private:
+    QColor background_color;
+    //int id_round;   //идентификатор круга (круг 1, 2, ... или 1/8, 1/4, ...  финала и т. п.)
+    int id_pair;    //идентификатор пары спортсменов
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
     virtual void mousePressEvent(QGraphicsSceneMouseEvent *event);
+    virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 
 };
 
@@ -30,11 +34,12 @@ private:
 class ItemResult : public ItemResultStart{
 
 public:
-    ItemResult();
+    ItemResult(int);
     QString num;
     QString result;
     QString time;
     QString vin;
+    int id_pair;
 
 private:
     QRectF boundingRect() const;

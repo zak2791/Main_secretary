@@ -14,7 +14,7 @@ class RoundSix : public QGraphicsScene{
     ItemNameRound* name6;
 
 public:
-    RoundSix();
+    RoundSix(QString, QString, QString);
 };
 
 #endif // ROUNDSIX_H

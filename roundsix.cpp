@@ -1,6 +1,6 @@
 #include "roundsix.h"
 
-RoundSix::RoundSix(){
+RoundSix::RoundSix(QString sGender, QString sAge, QString sWeight){
     int x = 0;
     int y = 0;
 
@@ -41,7 +41,7 @@ RoundSix::RoundSix(){
     QGraphicsTextItem* i6 = addText("6");
     i6->setPos(3, 250);
 
-    ItemNameRound* name1 = new ItemNameRound("Абдурахман ибн Хоттаб", "КМС", "Брянская обл.");
+    ItemNameRound* name1 = new ItemNameRound("Иванов Иван", "КМС", "Брянская обл.");
     addItem(name1);
     name1->setPos(20, 40);
     ItemNameRound* name2 = new ItemNameRound("Фамилия Имя", "КМС", "Брянская обл.");
@@ -59,4 +59,26 @@ RoundSix::RoundSix(){
     ItemNameRound* name6 = new ItemNameRound("Фамилия Имя", "КМС", "Брянская обл.");
     addItem(name6);
     name6->setPos(20, 240);
+
+    QFont f; //= font()
+    f.setPointSize(font().pointSize() * 1.5);
+
+    QGraphicsTextItem* category = new QGraphicsTextItem;
+    addItem(category);
+    category->setPos(150, -70);
+    category->setFont(f);
+    category->setPlainText(sGender);
+
+    QGraphicsTextItem* age = new QGraphicsTextItem;
+    addItem(age);
+    age->setPos(270, -70);
+    age->setFont(f);
+    age->setPlainText(sAge);
+
+    QGraphicsTextItem* weight = new QGraphicsTextItem;
+    addItem(weight);
+    weight->setPos(400, -70);
+    weight->setFont(f);
+    weight->setPlainText(sWeight);
+
 }
